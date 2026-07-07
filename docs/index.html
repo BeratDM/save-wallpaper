@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save Windows 11 Wallpaper — save-win11-wallpaper</title>
+    <meta name="description"
+        content="Download Windows 11 daily wallpapers to a folder using CLI or GUI. Free open-source tool. Duplicate detection, persistent config, timestamped PNGs." />
+    <meta name="keywords"
+        content="windows 11 wallpaper, save wallpaper, download wallpaper, wallpaper saver, windows theme" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=optional"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <span class="badge">Free & Open Source</span>
+                    <h1>Save Windows 11 Wallpaper</h1>
+                    <p class="hero-desc">Copy current Windows 11 desktop wallpaper to a folder.</p>
+                    <div class="hero-features">
+                        <div class="hf-item">
+                            <span class="hf-icon">🖥️</span>
+                            <div>
+                                <strong>CLI & GUI</strong>
+                                <span>Usable from user interface or command line</span>
+                            </div>
+                        </div>
+                        <div class="hf-item">
+                            <span class="hf-icon">🔍</span>
+                            <div>
+                                <strong>Duplicate detection</strong>
+                                <span>SHA-256 hashing keeps your folder clean</span>
+                            </div>
+                        </div>
+                        <div class="hf-item">
+                            <span class="hf-icon">⚙️</span>
+                            <div>
+                                <strong>Persistent config</strong>
+                                <span>Set your default folder once</span>
+                            </div>
+                        </div>
+                        <div class="hf-item">
+                            <span class="hf-icon">📅</span>
+                            <div>
+                                <strong>Timestamped files</strong>
+                                <span><code>wp-YY-MM-DD-ffffff.png</code> naming</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="https://github.com/BeratDM/save-win11-wallpaper/releases" class="btn btn-primary"
+                            target="_blank">⬇ Download getwallpaper.exe</a>
+                        <a href="https://github.com/BeratDM/save-win11-wallpaper" class="btn btn-ghost"
+                            target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="card-mock">
+                        <div class="card-mock-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="card-mock-body">
+                            <span class="card-mock-icon">🖼️</span>
+                            <span class="card-mock-label">wp-26-07-04-123456.png</span>
+                            <span class="card-mock-status">saved ✓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section screenshot-section">
+        <div class="container">
+            <div class="screenshot-frame">
+                <img src="https://pub-55a8605bd8ee494ab002c0bb70e15fed.r2.dev/github/w11wp.PNG"
+                    alt="Save Windows 11 Wallpaper GUI screenshot" class="app-screenshot" />
+            </div>
+        </div>
+    </section>
+
+    <section class="section download-section">
+        <div class="container">
+            <h2>Download</h2>
+            <p class="section-desc">Grab the latest <strong>getwallpaper.exe</strong> from GitHub Releases — no Python
+                required. Just download and run.</p>
+            <a href="https://github.com/BeratDM/save-win11-wallpaper/releases" class="btn btn-primary btn-lg"
+                target="_blank">⬇ Download .exe</a>
+        </div>
+    </section>
+
+    <section class="section how-section">
+        <div class="container">
+            <h2>How it works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h3>Read</h3>
+                        <p>The app reads <code>TranscodedWallpaper</code> from
+                            <code>%APPDATA%\Microsoft\Windows\Themes</code>.
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h3>Check</h3>
+                        <p>Computes a SHA-256 hash to see if the wallpaper was already saved — no duplicates.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h3>Save</h3>
+                        <p>Copies it as a timestamped PNG (<code>wp-YY-MM-DD-ffffff.png</code>) to your chosen folder.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p class="how-note">No third-party dependencies — only the Python standard library.</p>
+        </div>
+    </section>
+
+    <section class="section cli-section">
+        <div class="container">
+            <h2>CLI</h2>
+            <p class="section-desc">All commands work with <code>getwallpaper.exe</code> (downloaded) or
+                <code>python main.py</code> (source).
+            </p>
+            <div class="code-block">
+                <div class="code-line"><span class="cmt"># Save wallpaper to a folder</span></div>
+                <div class="code-line"><span class="prompt">$</span> getwallpaper.exe save <span
+                        class="str">"C:\Users\You\Pictures"</span></div>
+                <div class="code-line"><span class="cmt"># Save to default folder</span></div>
+                <div class="code-line"><span class="prompt">$</span> getwallpaper.exe save</div>
+                <div class="code-line"><span class="cmt"># View / set default folder</span></div>
+                <div class="code-line"><span class="prompt">$</span> getwallpaper.exe config get</div>
+                <div class="code-line"><span class="prompt">$</span> getwallpaper.exe config set <span
+                        class="str">"C:\Users\You\Pictures"</span></div>
+                <div class="code-line"><span class="cmt"># Show help</span></div>
+                <div class="code-line"><span class="prompt">$</span> getwallpaper.exe help</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section build-section">
+        <div class="container">
+            <h2>Build from source</h2>
+            <div class="code-block">
+                <div class="code-line"><span class="prompt">$</span> pip install pyinstaller</div>
+                <div class="code-line"><span class="prompt">$</span> pyinstaller main.spec</div>
+            </div>
+            <p class="section-desc">The executable will be placed in the <code>dist/</code> folder.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://github.com/BeratDM" target="_blank">BeratDM</a></p>
+            <p class="footer-links">
+                <a href="https://github.com/BeratDM/save-win11-wallpaper" target="_blank">GitHub</a>
+                <span class="sep">·</span>
+                <a href="https://github.com/BeratDM/save-win11-wallpaper/releases" target="_blank">Releases</a>
+                <span class="sep">·</span>
+                <a href="https://github.com/BeratDM/save-win11-wallpaper/issues" target="_blank">Issues</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
