@@ -16,3 +16,5 @@ icon.ico
 .DS_Store
 Thumbs.db
 .v1/
+.cline/
+.agents/
