@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save Windows 11 Wallpaper</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="header-text">
+                <h1>🖼️ Save Windows 11 Wallpaper</h1>
+                <p class="subtitle">
+                    Automatically save, organize, and manage Windows 11 daily wallpapers.
+                    Works from both CLI and GUI.
+                </p>
+                <div class="header-badges">
+                    <span class="badge badge-python">Python</span>
+                    <span class="badge badge-cli">CLI</span>
+                    <span class="badge badge-gui">GUI (Tkinter)</span>
+                    <span class="badge badge-win">Windows 11</span>
+                </div>
+                <div class="header-links">
+                    <a href="https://github.com/BeratDM/save-win11-wallpaper/releases" class="btn btn-primary"
+                        target="_blank">⬇ Download getwallpaper.exe</a>
+                    <a href="#get-started" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+            <div class="header-preview">
+                <div class="preview-box">
+                    <div class="preview-bar">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="preview-body">
+                        <span class="preview-icon">📸</span>
+                        <span class="preview-text">Wallpaper Saved!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sticky-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#get-started">Get Started</a></li>
+                <li><a href="#cli-usage">CLI Usage</a></li>
+                <li><a href="#gui-usage">GUI Usage</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#build">Build from Source</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="overview">
+            <h2>📋 Overview</h2>
+            <p>
+                <strong>save-win11-wallpaper</strong> is a Python utility that extracts the current
+                Windows 11 desktop wallpaper from the system's <code>TranscodedWallpaper</code>
+                file and saves it as a timestamped PNG image to a folder of your choice.
+                It checks for duplicates by file hash so you never save the same wallpaper twice.
+            </p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>CLI & GUI</h3>
+                    <p>Use from the command line for scripting, or launch the friendly GUI for one-click saving.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Duplicate Detection</h3>
+                    <p>SHA-256 hashing ensures every saved image is unique — no more duplicate wallpapers cluttering
+                        your folder.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Persistent Config</h3>
+                    <p>Set and forget your default save folder via the GUI settings or <code>config set</code> command.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Timestamped Files</h3>
+                    <p>Saved files follow the <code>wp-YY-MM-DD-ffffff.png</code> naming scheme for easy sorting.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="get-started">
+            <h2>🚀 Get Started</h2>
+
+            <h3>Option 1: Download the pre-built .exe (recommended)</h3>
+            <p>
+                Grab the latest <code>getwallpaper.exe</code> from the
+                <a href="https://github.com/BeratDM/save-win11-wallpaper/releases" target="_blank">Releases page</a> —
+                no Python required.
+            </p>
+            <div class="code-block">
+                <div class="code-header">Usage after download</div>
+                <pre><code>getwallpaper.exe save "C:\Users\YourName\Pictures\Wallpapers"
+getwallpaper.exe               (launches the GUI)</code></pre>
+            </div>
+            <div class="note">
+                <strong>Tip:</strong> Add the folder containing <code>getwallpaper.exe</code> to your <code>PATH</code>
+                so you can run it from anywhere.
+            </div>
+
+            <h3>Option 2: Run from source</h3>
+            <div class="code-block">
+                <div class="code-header">Clone & run</div>
+                <pre><code>git clone https://github.com/BeratDM/save-win11-wallpaper.git
+cd save-win11-wallpaper
+python main.py</code></pre>
+            </div>
+            <div class="note">
+                <strong>Note:</strong> This tool is designed for <strong>Windows 11</strong> and relies on
+                Windows-specific paths under <code>%APPDATA%\Microsoft\Windows\Themes</code>.
+                No third-party dependencies are needed — only the Python standard library.
+            </div>
+        </section>
+
+        <section id="cli-usage">
+            <h2>⌨️ CLI Usage</h2>
+            <p>All commands work identically with <code>getwallpaper.exe</code> (downloaded release) or
+                <code>python main.py</code> (source):
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">Save wallpaper to the default folder</div>
+                <pre><code>getwallpaper.exe save</code></pre>
+            </div>
+            <div class="code-block">
+                <div class="code-header">Save wallpaper to a specific folder</div>
+                <pre><code>getwallpaper.exe save "C:\Users\YourName\Pictures\Wallpapers"</code></pre>
+            </div>
+            <div class="code-block">
+                <div class="code-header">View current default folder</div>
+                <pre><code>getwallpaper.exe config get</code></pre>
+            </div>
+            <div class="code-block">
+                <div class="code-header">Set a new default folder</div>
+                <pre><code>getwallpaper.exe config set "C:\Users\YourName\Pictures"</code></pre>
+            </div>
+            <div class="code-block">
+                <div class="code-header">Show help</div>
+                <pre><code>getwallpaper.exe help</code></pre>
+            </div>
+
+            <p>If running from source, replace <code>getwallpaper.exe</code> with <code>python main.py</code>.</p>
+        </section>
+
+        <section id="gui-usage">
+            <h2>🖱️ GUI Usage</h2>
+            <p>Launch the GUI by running <code>getwallpaper.exe</code> (or <code>python main.py</code>) without
+                arguments:</p>
+            <div class="code-block">
+                <pre><code>getwallpaper.exe</code></pre>
+            </div>
+
+            <div class="gui-screenshot-placeholder">
+                <div class="mock-gui">
+                    <div class="mock-title">Save Windows Wallpaper</div>
+                    <div class="mock-body">
+                        <div class="mock-row">
+                            <span>Destination:</span>
+                            <span class="mock-btn mock-btn-small">⚙ Settings</span>
+                        </div>
+                        <div class="mock-row">
+                            <span class="mock-dropdown">Default folder ▼</span>
+                            <span class="mock-input">X:\Files\Wallpapers\n1\x\</span>
+                            <span class="mock-btn">Browse</span>
+                        </div>
+                        <div class="mock-row mock-status">Ready</div>
+                        <div class="mock-row mock-center">
+                            <span class="mock-btn mock-btn-primary">Save Wallpaper</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>How the GUI works:</h3>
+            <ol>
+                <li><strong>Destination</strong> — Choose between <em>Default folder</em>, <em>Current directory</em>,
+                    or <em>Specify...</em> a custom path.</li>
+                <li><strong>Settings (⚙)</strong> — Open the settings dialog to change your default folder permanently.
+                </li>
+                <li><strong>Browse</strong> — Pick a folder interactively.</li>
+                <li><strong>Save Wallpaper</strong> — Saves the current wallpaper. Shows status messages and an <em>Open
+                        Folder</em> button on success.</li>
+            </ol>
+        </section>
+
+        <section id="configuration">
+            <h2>⚙️ Configuration</h2>
+            <p>
+                The configuration file is stored at:<br />
+                <code>%LOCALAPPDATA%\BRT-SaveWallpaper\config.json</code>
+            </p>
+            <div class="code-block">
+                <div class="code-header">Example config.json</div>
+                <pre><code>{
+  "default_folder": "X:\\Files\\Wallpapers\\n1\\x\\"
+}</code></pre>
+            </div>
+            <p>
+                The default save location is hardcoded in <code>config.py</code> as
+                <code>WP_DEFAULT</code>. You can change it via the <code>config set</code> CLI
+                command or the GUI Settings dialog.
+            </p>
+        </section>
+
+        <section id="build">
+            <h2>🔨 Build from Source</h2>
+            <p>If you prefer to build the executable yourself using <strong>PyInstaller</strong>:</p>
+            <div class="code-block">
+                <div class="code-header">Build command</div>
+                <pre><code>pip install pyinstaller
+pyinstaller main.spec</code></pre>
+            </div>
+            <p>
+                The spec file is included in the repository. The built executable will be placed
+                in the <code>dist/</code> folder and can be distributed without requiring Python.
+            </p>
+            <p>
+                Alternatively, just grab the pre-built <code>getwallpaper.exe</code> from
+                <a href="https://github.com/BeratDM/save-win11-wallpaper/releases" target="_blank">GitHub Releases</a>.
+            </p>
+        </section>
+
+        <section id="project-structure">
+            <h2>📁 Project Structure</h2>
+            <pre class="tree">save-win11-wallpaper/
+├── main.py             # Entry point — dispatches CLI or GUI
+├── cli.py              # Command-line interface logic
+├── gui.py              # Tkinter-based graphical interface
+├── config.py           # Persistent configuration (JSON)
+├── getwallpaper.py     # Core wallpaper extraction & saving logic
+├── main.spec           # PyInstaller build spec
+├── .gitignore
+└── README.md</pre>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Built with ❤️ by <a href="https://github.com/BeratDM" target="_blank">BeratDM</a></p>
+            <p class="footer-links">
+                <a href="https://github.com/BeratDM/save-win11-wallpaper" target="_blank">GitHub</a>
+                &middot;
+                <a href="https://github.com/BeratDM/save-win11-wallpaper/releases" target="_blank">Releases</a>
+                &middot;
+                <a href="https://github.com/BeratDM/save-win11-wallpaper/issues" target="_blank">Issues</a>
+                &middot;
+                <a href="https://github.com/BeratDM/save-win11-wallpaper/blob/main/LICENSE" target="_blank">License</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
