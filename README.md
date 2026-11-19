@@ -1,6 +1,6 @@
-# save-win11-wallpaper
+# save-wallpaper
 
-Store Windows 11 daily wallpapers into a folder, usable from cli and gui.
+Save wallpapers you love to a folder on Windows. Usable from the CLI and GUI.
 
 Save 1 minute every day. (I spent more time automating it.)
 
